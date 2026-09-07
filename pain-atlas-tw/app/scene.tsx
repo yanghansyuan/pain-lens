@@ -61,9 +61,8 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
     shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvec2 stateUv = vec2((partIndex + 0.5) / stateWidth, 0.5); vec4 state = texture2D(partState, stateUv); transformed += state.xyz; partVisible = state.w; partSelected = texture2D(selectionState, stateUv).r;');
     shader.fragmentShader='uniform float selectedPulse; varying float partVisible; varying float partSelected;\n'+shader.fragmentShader;
     shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif (partVisible < 0.5) discard;');
-    shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\nvec3 selectedColor = mix(vec3(0.42, 0.85, 0.78), vec3(1.0, 0.78, 0.06), selectedPulse); diffuseColor.rgb = mix(diffuseColor.rgb, selectedColor, partSelected * (0.75 + selectedPulse * 0.25));');
-    shader.fragmentShader=shader.fragmentShader.replace('#include <opaque_fragment>','diffuseColor.a *= mix(mix(1.0, 0.16, selectedPulse), 1.0, partSelected);\n#include <opaque_fragment>');
-   };m.transparent=true;m.depthWrite=system==='integumentary';materials.push(m);return m;
+    shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\nvec3 selectedColor = mix(vec3(0.42, 0.85, 0.78), vec3(1.0, 0.78, 0.06), selectedPulse); vec3 dimColor = mix(diffuseColor.rgb, vec3(0.78, 0.80, 0.78), selectedPulse * 0.78); diffuseColor.rgb = mix(dimColor, selectedColor, partSelected * (0.75 + selectedPulse * 0.25));');
+   };materials.push(m);return m;
   };
   const mats=new Map(SYSTEMS.map(s=>[s.id,materialFor(s.id)]));
   let loaded=0;
@@ -147,3 +146,4 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
  },[atlas]);
  return <div className="scene" ref={host}/>;
 }
+
