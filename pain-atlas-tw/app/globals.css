@@ -31,8 +31,8 @@
 /* Modern studio surfaces and shadcn control treatments. */
 :root{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--primary-foreground:#ffffff;--radius:.75rem;-webkit-font-smoothing:antialiased}
 .glass{border-radius:16px;box-shadow:0 2px 5px #24334403,0 16px 48px #24334407;backdrop-filter:blur(24px)}
-h1{display:flex;align-items:center;gap:12px;font-size:32px;font-weight:600;letter-spacing:-1.3px;margin:10px 0 8px}
-h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.03em;margin:0;opacity:1;color:#697782;border-color:var(--border);padding:2px 6px;border-radius:6px}
+h1{display:flex;align-items:center;gap:12px;font-size:32px;font-weight:600;letter-spacing:-1.3px;margin:10px 0 8px}.brand-title{display:inline-flex;align-items:center;gap:12px;width:max-content;max-width:min(560px,calc(100vw - 48px));padding:10px 14px 11px 16px;border:1px solid #263b4820;border-radius:14px;background:linear-gradient(135deg,#ffffff 0%,#f3fbfa 54%,#eef3f6 100%);box-shadow:0 16px 38px #263b4814,0 2px 5px #263b480b;color:#152633}.brand-title>span{font-size:clamp(38px,5vw,58px);line-height:.95;font-weight:800;letter-spacing:-1.8px;text-shadow:0 1px 0 #fff}
+h1 .edition{font-family:inherit;font-weight:700;font-size:11px;letter-spacing:.03em;margin:0;opacity:1;color:#1f5260;background:#dff3f1;border-color:#86bbb6;padding:4px 8px;border-radius:7px;white-space:nowrap}
 .eyebrow{font-size:10px;font-weight:600;letter-spacing:.14em}
 .identity-meta{font-size:11px;letter-spacing:0}
 .anatomy-choice{margin-top:14px}.anatomy-choice [data-slot=select-trigger]{border-radius:9px;min-height:38px;color:var(--foreground);background:#ffffffd9;box-shadow:0 1px 2px #18253604}
@@ -48,7 +48,7 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 .search-panel{border-radius:14px}.search-panel [data-slot=input-group]{border-radius:9px;background:#f7f9fa}.anatomy-search-results{border-radius:12px!important}.about-sheet{border-radius:16px 0 0 16px}.about-copy strong{font-weight:600}.loading{border-radius:14px}.loading strong{font-weight:500}.part-hover{border-radius:8px;font-size:12px}
 @media(min-width:1400px){.system-row,.system-name{min-height:38px}.system-name{font-size:13px}}
 @media(max-width:1000px){.layers-panel{padding-inline:10px}.system-name{font-size:11px}}
-@media(max-width:767px){h1{font-size:28px;gap:9px}.eyebrow{font-size:9px}.top-actions{gap:5px;right:14px}.top-actions button{width:38px;height:40px;padding:0;border-radius:9px}.top-actions .icon-button{min-width:38px;width:38px}.identity-meta{font-size:10px}.anatomy-choice [data-slot=select-trigger]{min-height:40px}.layers-panel.mobile-open{border-radius:16px;padding:10px 14px 0}.layer-presets button{height:38px;font-size:12px}.system-row,.system-name{min-height:44px}.system-name{font-size:13px}.system-list{padding-right:12px}.panel-heading{font-size:13px}.panel-heading .mobile-only{height:40px;padding:0}.bottom-dock{padding:13px;gap:14px;border-radius:14px}.dock-layers{padding-right:12px;font-size:10px}.dock-reset{padding-left:12px}.explode-label{font-size:11px}.scene-caption{font-size:8px}.detail-sheet{border-radius:16px}.detail-header .structure-title{font-size:22px!important}.detail-actions{gap:3px}.search-panel{top:161px}.about-sheet{border-radius:0}}
+@media(max-width:767px){h1{font-size:28px;gap:9px}.brand-title{gap:8px;padding:8px 10px 9px 12px;max-width:calc(100vw - 104px);border-radius:12px}.brand-title>span{font-size:clamp(29px,10vw,38px);letter-spacing:-1.1px}.brand-title .edition{font-size:9px;padding:3px 6px}.eyebrow{font-size:9px}.top-actions{gap:5px;right:14px}.top-actions button{width:38px;height:40px;padding:0;border-radius:9px}.top-actions .icon-button{min-width:38px;width:38px}.identity-meta{font-size:10px}.anatomy-choice [data-slot=select-trigger]{min-height:40px}.layers-panel.mobile-open{border-radius:16px;padding:10px 14px 0}.layer-presets button{height:38px;font-size:12px}.system-row,.system-name{min-height:44px}.system-name{font-size:13px}.system-list{padding-right:12px}.panel-heading{font-size:13px}.panel-heading .mobile-only{height:40px;padding:0}.bottom-dock{padding:13px;gap:14px;border-radius:14px}.dock-layers{padding-right:12px;font-size:10px}.dock-reset{padding-left:12px}.explode-label{font-size:11px}.scene-caption{font-size:8px}.detail-sheet{border-radius:16px}.detail-header .structure-title{font-size:22px!important}.detail-actions{gap:3px}.search-panel{top:161px}.about-sheet{border-radius:0}}
 @media(max-height:600px) and (orientation:landscape){.layers-panel.mobile-open{top:132px}.bottom-dock{padding:10px 15px}.search-panel{top:70px}}
 
 /* Touch layouts keep camera controls outside the selectable anatomy. */
@@ -74,7 +74,7 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
  .about-copy a{min-height:44px}.studio-footer button{min-height:24px}
 }
 @media(max-width:350px){
- h1{font-size:24px;gap:6px}.identity-meta{font-size:9px}.eyebrow{font-size:8px}
+ h1{font-size:24px;gap:6px}.brand-title{max-width:calc(100vw - 96px);gap:6px;padding-inline:9px}.brand-title>span{font-size:27px}.brand-title .edition{font-size:8px;padding-inline:5px}.identity-meta{font-size:9px}.eyebrow{font-size:8px}
  .top-actions{gap:2px}.top-actions button,.top-actions .icon-button{width:44px;min-width:44px}
  .bottom-dock{gap:8px;padding:11px}.explode-label{font-size:10px;gap:3px}.explode-label output{min-width:39px;padding:3px 5px}
  .detail-sheet{padding:14px!important}.detail-header .structure-title{font-size:18px!important}.detail-header{padding-right:18px}
