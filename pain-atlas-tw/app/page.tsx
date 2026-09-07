@@ -20,6 +20,7 @@ const TERMS:Record<string,string>={
  'gluteus maximus':'臀大肌','gluteus medius':'臀中肌','gluteus minimus':'臀小肌','piriformis':'梨狀肌','iliopsoas':'髂腰肌','psoas major':'腰大肌','iliacus':'髂肌','quadratus lumborum':'腰方肌',
  'erector spinae':'豎脊肌','iliocostalis lumborum':'腰髂肋肌','longissimus thoracis':'胸最長肌','multifidus':'多裂肌','latissimus dorsi':'闊背肌','sacroiliac':'薦髂',
  'femur':'股骨','sacrum':'薦骨','coccyx':'尾骨','acetabulum':'髖臼','hip':'髖','thigh':'大腿','hamstring':'腿後肌','biceps femoris':'股二頭肌','semitendinosus':'半腱肌','semimembranosus':'半膜肌',
+ 'hand':'手部','wrist':'手腕','finger':'手指','thumb':'拇指','palm':'手掌','palmar':'掌側','forearm':'前臂','brachialis':'肱肌','biceps brachii':'肱二頭肌','triceps brachii':'肱三頭肌','flexor':'屈肌','extensor':'伸肌','interossei':'骨間肌',
  'rectus abdominis':'腹直肌','external oblique':'腹外斜肌','internal oblique':'腹內斜肌','transversus abdominis':'腹橫肌',
  'heart':'心臟','brain':'腦','liver':'肝臟','stomach':'胃','spleen':'脾臟','pancreas':'胰臟','kidney':'腎臟','urinary bladder':'膀胱','trachea':'氣管','lung':'肺','colon':'結腸','small intestine':'小腸'
 };
@@ -36,15 +37,25 @@ const TIPS:Record<string,{zh:string;keywords:string[]}> = {
  'semimembranosus':{zh:'半膜肌',keywords:['hamstring strengthening physical therapy','semimembranosus rehab exercise','腿後肌 強化 復健']},
  'sacrum':{zh:'薦骨',keywords:['sacroiliac joint pain exercises physical therapy','SI joint stabilization exercises','薦髂關節 復健 運動']},
  'femur':{zh:'股骨',keywords:['hip mobility physical therapy','hip strengthening physical therapy','髖關節 活動度 復健']},
+ 'hand':{zh:'手部',keywords:['hand wrist physical therapy exercises','finger tendon glides hand therapy','手腕 手指 復健 運動']},
+ 'wrist':{zh:'手腕',keywords:['wrist physical therapy exercises','wrist flexor extensor stretch','手腕 復健 伸展']},
+ 'palmar':{zh:'掌側',keywords:['hand intrinsic muscle exercises therapy','finger tendon glides hand therapy','手掌 手指 復健']},
+ 'flexor':{zh:'屈肌',keywords:['wrist flexor stretch physical therapy','forearm flexor strengthening rehab','前臂屈肌 伸展 復健']},
+ 'extensor':{zh:'伸肌',keywords:['wrist extensor stretch physical therapy','forearm extensor strengthening rehab','前臂伸肌 伸展 復健']},
+ 'brachialis':{zh:'肱肌',keywords:['upper arm strengthening physical therapy','elbow flexor strengthening rehab','手臂 肘關節 復健']},
+ 'biceps brachii':{zh:'肱二頭肌',keywords:['biceps physical therapy exercise','elbow flexion strengthening rehab','肱二頭肌 復健 訓練']},
+ 'triceps brachii':{zh:'肱三頭肌',keywords:['triceps physical therapy exercise','elbow extension strengthening rehab','肱三頭肌 復健 訓練']},
 };
 const SEARCH_ALIASES:Record<string,string[]>={
  '梨狀肌':['piriformis'],'臀中肌':['gluteus medius'],'臀大肌':['gluteus maximus'],'臀小肌':['gluteus minimus'],'股方肌':['quadratus femoris'],'腰方肌':['quadratus lumborum'],
  '腰大肌':['psoas major'],'髂腰肌':['iliopsoas'],'髂肌':['iliacus'],'豎脊肌':['iliocostalis lumborum','longissimus thoracis'],'腰髂肋肌':['iliocostalis lumborum'],'胸最長肌':['longissimus thoracis'],
  '股二頭肌':['biceps femoris'],'半腱肌':['semitendinosus'],'半膜肌':['semimembranosus'],'腹直肌':['rectus abdominis'],'腹外斜肌':['external oblique'],'腹內斜肌':['internal oblique'],'腹橫肌':['transversus abdominis'],
+ '手':['hand','wrist','finger','palmar','interossei'],'手腕':['wrist','flexor','extensor'],'手指':['finger','interossei','palmar'],'拇指':['thumb'],'前臂':['forearm','flexor','extensor'],'肱二頭肌':['biceps brachii'],'肱三頭肌':['triceps brachii'],
  '髖':['hip','gluteus','psoas','piriformis'],'屁股':['gluteus','piriformis'],'臀':['gluteus','piriformis'],'下背':['iliocostalis lumborum','longissimus thoracis','quadratus lumborum','psoas'],'腰':['iliocostalis lumborum','longissimus thoracis','quadratus lumborum','psoas']
 };
 const muscleSeeds=['piriformis','gluteus medius','gluteus maximus','gluteus minimus','psoas major','iliacus','quadratus femoris','iliocostalis lumborum','longissimus thoracis','biceps femoris','semitendinosus','semimembranosus','rectus abdominis','external oblique','internal oblique','transversus abdominis'];
 const VIDEO_PREVIEWS=[
+ {match:['hand','手部','wrist','手腕','finger','手指','thumb','拇指','palm','palmar','掌側','interossei','flexor','extensor','forearm'],title:'手部/手腕伸展與訓練示範',id:'mlh5ExWWkVo',caption:'適合用來先理解手腕、手指與前臂肌群的復健動作方向。'},
  {match:['piriformis','梨狀肌','sciatica'],title:'梨狀肌/坐骨神經伸展示範',id:'4UoITjubrgE',caption:'適合先看動作方向，再依自身狀況保守嘗試。'},
  {match:['gluteus','臀','hip','髖','psoas','iliacus','quadratus femoris'],title:'髖部伸展與強化示範',id:'tQNk6mpFsww',caption:'可用來理解臀部、髖屈肌與髖周邊動作。'},
  {match:['lumbar','back','腰','下背','sacrum','薦'],title:'下背/臀部疼痛常見伸展',id:'4UoITjubrgE',caption:'偏向下背連到臀部時，可先看溫和伸展類型。'}
@@ -66,7 +77,7 @@ function videoSearches(name:string){
 function videoPreviews(name:string){
  const text=`${name} ${localName(name)}`.toLowerCase();
  const matches=VIDEO_PREVIEWS.filter(v=>v.match.some(term=>text.includes(term.toLowerCase())));
- return (matches.length?matches:VIDEO_PREVIEWS.slice(1,2)).slice(0,2);
+ return matches.slice(0,2);
 }
 function searchTerms(query:string){
  const term=query.toLowerCase().trim(),aliases=Object.entries(SEARCH_ALIASES).filter(([zh])=>query.includes(zh)).flatMap(([,en])=>en);
