@@ -1,6 +1,8 @@
 # Pain Lens
 
-Pain Lens is a local interactive pain-oriented anatomy viewer. It includes two preserved versions:
+Pain Lens is an interactive pain-oriented anatomy viewer. Open the public website at https://yanghansyuan.github.io/pain-lens/.
+
+The website deploys automatically through GitHub Pages when changes to the active app are pushed to `main`. It includes two preserved versions:
 
 - `pain-atlas-tw/`: the newer Human Atlas based 3D anatomy viewer with Traditional Chinese UI, structure hiding, transparent location highlighting, and embedded YouTube rehabilitation previews.
 - `static-dist/`: the earlier pain marking prototype kept as a reference.
