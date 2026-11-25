@@ -62,3 +62,15 @@ Import this repository into Vercel as a Vite project. The included `vercel.json`
 Original application code is released under the [MIT License](LICENSE). **The anatomy data has its own CC BY 4.0 license**; preserve the attribution when redistributing it. Third-party dependencies retain their respective licenses.
 
 Issues and pull requests are welcome. Please include reproduction steps and browser/device details for interaction problems.
+
+## Model Loading
+
+The initial view downloads muscles and bones only. Other systems load when enabled or when a structure from that system is selected in search. Model chunks are grouped by system, with torso structures first. Loaded chunks remain available for the current session; unfinished queued work is reprioritized when the selection changes.
+
+To validate geometry and loading behavior:
+
+```powershell
+node scripts/validate-atlas.mjs
+node scripts/validate-model-loading.mjs
+node scripts/validate-interactions.mjs
+```
