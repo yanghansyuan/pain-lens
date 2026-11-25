@@ -10,6 +10,7 @@ import {Sheet,SheetContent,SheetTitle,SheetDescription} from '@/components/ui/sh
 import {Combobox,ComboboxInput,ComboboxContent,ComboboxList,ComboboxItem,ComboboxEmpty} from '@/components/ui/combobox';
 import AnatomyScene from './scene';
 import type {ModelLoadStatus} from './model-loading';
+import {localMuscleName} from './muscle-names';
 import {DEFAULT_VISIBLE,SYSTEMS,EXPLANATIONS,explanation,type Atlas,type Concept,type SceneState,type SystemId,type View} from './anatomy';
 const initial:SceneState={explode:0,visible:DEFAULT_VISIBLE,selected:[],hidden:[],isolate:false,view:'three-quarter',rotate:false,reset:0,highlight:0};
 const localAsset=(url:string)=>url.startsWith('/')?`.${url}`:url;
@@ -71,6 +72,7 @@ const TIPS:Record<string,{zh:string;keywords:string[]}> = {
  'plantar':{zh:'足底',keywords:['plantar fasciitis stretches physical therapy','foot pain relief exercises','足底筋膜 伸展']},
 };
 const SEARCH_ALIASES:Record<string,string[]>={
+ '上孖肌':['gemellus superior'],'下孖肌':['gemellus inferior'],'上雙子肌':['gemellus superior'],'下雙子肌':['gemellus inferior'],
  '梨狀肌':['piriformis'],'臀中肌':['gluteus medius'],'臀大肌':['gluteus maximus'],'臀小肌':['gluteus minimus'],'股方肌':['quadratus femoris'],'腰方肌':['quadratus lumborum'],
  '腰大肌':['psoas major'],'髂腰肌':['iliopsoas'],'髂肌':['iliacus'],'豎脊肌':['iliocostalis lumborum','longissimus thoracis'],'腰髂肋肌':['iliocostalis lumborum'],'胸最長肌':['longissimus thoracis'],
  '股二頭肌':['biceps femoris'],'半腱肌':['semitendinosus'],'半膜肌':['semimembranosus'],'腹直肌':['rectus abdominis'],'腹外斜肌':['external oblique'],'腹內斜肌':['internal oblique'],'腹橫肌':['transversus abdominis'],
@@ -104,6 +106,7 @@ const REGION_PREVIEWS=[
 ];
 type VideoPreview=typeof VIDEO_PREVIEWS[number]&{fallbackRegion?:string};
 function localName(name:string){
+ const muscleName=localMuscleName(name);if(muscleName)return muscleName;
  const lower=name.toLowerCase();
  const hit=Object.entries(TIPS).find(([key])=>lower.includes(key));
  const terms=Object.entries(TERMS).sort((a,b)=>b[0].length-a[0].length);
